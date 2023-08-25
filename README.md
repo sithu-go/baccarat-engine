@@ -1,3 +1,7 @@
+[![npm version](https://img.shields.io/npm/v/@sithusoe/baccarat-engine.svg?style=flat-square)](https://www.npmjs.com/package/@sithusoe/baccarat-engine)
+![npm](https://img.shields.io/npm/dw/@sithusoe/baccarat-engine)
+
+
 # Modified Baccarat Engine
 This module is the modified version of baccarat-engine from [jconradi](<https://github.com/jconradi>) and [events](<https://github.com/browserify/events>).
 
@@ -21,3 +25,23 @@ Uncaught Error: Dynamic require of "events" is not supported
 ```
 
  For that case, I adjusted using baccarat-engine and events.
+
+ ## Cut Cards & Burning Cards
+
+Cut cards are part of the shoe implementation. Currently set to 16 cards before the end of the shoe, the Baccarat Game Engine will show when a burn is required.
+
+```js
+// Create game engine (8 decks default)
+gameEngine = new BaccaratGameEngine();
+gameEngine.shoe.createDecks();
+gameEngine.shoe.shuffle();
+
+if (gameEngine.isBurnNeeded) {
+  // Burn card is the first card drawn that determined the burn cards to use.
+  var burnCard = gameEngine.burnCards();
+}
+```
+
+## Usage
+
+[Sample usage](sample-usage.js)
